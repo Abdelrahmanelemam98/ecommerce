@@ -1,0 +1,123 @@
+<app-navbar (searchEvent)="onSearch($event)"></app-navbar>
+
+<div class="container">
+  <div class="content">
+    <div class="inner_content">
+      <h2>{{ selectedProductName }}</h2>
+      <div class="breadcrumb">
+        <span>Home / </span>
+        <span>Products / </span>
+        <span class="fw-bold">{{ selectedProductName }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Result Count and Sorting Section -->
+  <div class="header_section">
+    <div class="results_count">
+      <span>({{ paginatedProducts.length }}) Products Found</span>
+    </div>
+    <div class="sorting_section">
+      <span>Sort By: </span>
+      <select (change)="onSortChange($event)">
+        <option value="price_asc">Price: Low to High</option>
+        <option value="price_desc">Price: High to Low</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="category_section">
+      <app-category (categoryChanged)="onCategoryChange($event)"></app-category>
+    </div>
+
+    <div class="products_section">
+      <div class="product_grid">
+        <ng-container *ngFor="let product of paginatedProducts">
+          <div class="product_card">
+            <div class="card">
+              <div class="card_body">
+                <div class="card_body_img">
+                  <img [src]="product.thumbnail" alt="{{ product.title }}" />
+                  <span class="discount_amount">
+                    {{ -product.discountPercentage }}%
+                  </span>
+                </div>
+                <div class="card_title">
+                  <h6>{{ product.title }}</h6>
+                  <div class="card_desc">{{ product.description }}</div>
+                  <div class="card_price">
+                    <span class="card_price_before"
+                      >{{
+                        product.price | currency : "USD" : "symbol" : "1.2-2"
+                      }}
+                      USD</span
+                    >
+                    <span class="card_price_after">
+                      {{
+                        calculateDiscountedPrice(
+                          product.price,
+                          product.discountPercentage
+                        ) | currency : "USD" : "symbol" : "1.2-2"
+                      }}
+                      USD
+                    </span>
+                  </div>
+
+                  <div class="card_details">
+                    <p>
+                      Brand: <span>{{ product.brand }}</span>
+                    </p>
+                    <p>
+                      Category: <span>{{ product.category }}</span>
+                    </p>
+                    <p>
+                      In stock: <span>{{ product.stock }}</span>
+                    </p>
+                    <p>
+                      Weight: <span>{{ product.weight }}g</span>
+                    </p>
+                    <p>
+                      SKU: <span>{{ product.sku }}</span>
+                    </p>
+                    <p>
+                      Dimensions:
+                      <span>
+                        {{ product.dimensions.width }} x
+                        {{ product.dimensions.height }} x
+                        {{ product.dimensions.depth }} cm
+                      </span>
+                    </p>
+                  </div>
+                  <div class="card_review">
+                    <i class="fa-solid fa-star"></i>
+                    <span
+                      >{{ product.rating }} ({{ product.reviews.length }})</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="card_btn">
+                <app-button
+                  [ButtonTypes]="ButtonTypes.Primary"
+                  (clicked)="addToCart(product)"
+                  >ADD TO CART
+                </app-button>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination_section">
+    <app-pagination
+      [totalItems]="totalProducts"
+      [itemsPerPage]="itemsPerPage"
+      [currentPage]="currentPage"
+      (pageChanged)="onPageChange($event)"
+    >
+    </app-pagination>
+  </div>
+</div>

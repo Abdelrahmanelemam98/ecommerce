@@ -1,0 +1,24 @@
+<div class="pagination">
+  <a href="#" (click)="previousPage()" [class.disabled]="currentPage === 1">
+    &laquo;
+  </a>
+
+  <ng-container *ngIf="visiblePages.length > 0">
+    <a
+      *ngFor="let page of visiblePages"
+      href="#"
+      [class.active]="page === currentPage"
+      (click)="goToPage(page)"
+    >
+      {{ page }}
+    </a>
+  </ng-container>
+
+  <a
+    href="#"
+    (click)="nextPage()"
+    [class.disabled]="currentPage === totalPages"
+  >
+    &raquo;
+  </a>
+</div>

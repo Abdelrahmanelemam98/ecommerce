@@ -1,0 +1,167 @@
+@import "../../../../assets/shared/sass/var";
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.inner_content {
+  margin-block: 4rem;
+  h2 {
+    margin-block: 1rem;
+  }
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
+
+  .products_section {
+    .product_grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+
+      .product_card {
+        background-color: $card-bg;
+        border: 1px solid $card-border;
+        border-radius: $card-border-radius;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .card_body {
+          flex-grow: 1;
+          padding: 15px;
+          position: relative;
+          .card_body_img {
+            img {
+              max-width: 100%;
+              height: auto;
+            }
+
+            .discount_amount {
+              position: absolute;
+              top: 10px;
+              left: 10px;
+              background-color: $primary-color;
+              color: $general-color;
+              padding: 5px 10px;
+              border-radius: 5px;
+              font-size: 0.875rem;
+              font-weight: bold;
+            }
+          }
+
+          .card_title {
+            padding: $card-padding;
+
+            h6 {
+              margin: 10px 0;
+              font-size: 1.25rem;
+              font-weight: bold;
+              color: #333;
+            }
+
+            .card_desc {
+              margin-bottom: 10px;
+              font-size: 14px;
+              color: #666;
+            }
+
+            .card_price {
+              display: flex;
+              align-items: baseline;
+              margin: 10px 0;
+
+              .card_price_before {
+                font-size: 1rem;
+                text-decoration: line-through;
+                margin-right: 10px;
+                color: $general-color;
+              }
+
+              .card_price_after {
+                font-size: 1.25rem;
+                font-weight: bold;
+                color: $general-color;
+              }
+            }
+
+            .card_details {
+              font-size: 0.875rem;
+              color: #333;
+              margin: 10px 0;
+
+              p {
+                margin: 5px 0;
+
+                span {
+                  font-weight: bold;
+                }
+              }
+            }
+
+            .card_review {
+              display: flex;
+              align-items: center;
+              justify-content: flex-end;
+              i {
+                color: $review-bg;
+                margin-right: 5px;
+              }
+
+              span {
+                margin-right: 5px;
+              }
+            }
+          }
+        }
+
+        .card_btn {
+          padding: 15px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+.header_section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  .results_count {
+    font-weight: bold;
+  }
+
+  .sorting_section {
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    select {
+      padding: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+  }
+}
+
+.pagination_section {
+  display: flex;
+  justify-content: center;
+  margin-block: 2rem;
+}

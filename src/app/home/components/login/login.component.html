@@ -1,0 +1,65 @@
+<div class="login-container">
+  <div class="login-box">
+    <span class="logo">
+      <span class="inner_logo"></span>
+    </span>
+    <h2>Log in to your account</h2>
+    <p>Welcome back! Please enter your details.</p>
+    <form [formGroup]="loginForm">
+      <!-- Email Field -->
+      <label for="email">Email</label>
+      <input
+        id="email"
+        formControlName="email"
+        type="email"
+        placeholder="Enter your email"
+      />
+      <div
+        *ngIf="
+          loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+        "
+      >
+        <small *ngIf="loginForm.get('email')?.errors?.['required']">
+          Email is required.
+        </small>
+        <small *ngIf="loginForm.get('email')?.errors?.['pattern']">
+          Invalid email format.
+        </small>
+      </div>
+
+      <!-- Password Field -->
+      <label for="password">Password</label>
+      <input
+        id="password"
+        formControlName="password"
+        type="password"
+        placeholder="********"
+      />
+      <div
+        *ngIf="
+          loginForm.get('password')?.invalid &&
+          loginForm.get('password')?.touched
+        "
+      >
+        <small *ngIf="loginForm.get('password')?.errors?.['required']">
+          Password is required.
+        </small>
+        <small *ngIf="loginForm.get('password')?.errors?.['pattern']">
+          Password must be at least 8 characters long and contain uppercase,
+          lowercase, number, and special character.
+        </small>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="btn_submit">
+        <app-button
+          [ButtonTypes]="ButtonTypes.Primary"
+          [disabled]="loginForm.invalid"
+          (clicked)="onSubmit()"
+        >
+          Sign in
+        </app-button>
+      </div>
+    </form>
+  </div>
+</div>

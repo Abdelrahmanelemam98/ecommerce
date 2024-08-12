@@ -1,0 +1,30 @@
+<nav class="navbar">
+  <div class="navbar_logo">
+    <span class="logo">
+      <span class="inner_logo"></span>
+    </span>
+    <p>ClickTik</p>
+    <div class="navbar-brand">
+      <a routerLink="product" class="navbar-item">Home</a>
+    </div>
+  </div>
+
+  <div class="search_section" *ngIf="isLoggedIn">
+    <div class="navbar-search">
+      <input
+        type="text"
+        placeholder="Search products..."
+        (input)="onInput($event)"
+      />
+    </div>
+    <div class="nav-cart">
+      <a href="#" class="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">{{ countProduct || 0 }}</span>
+      </a>
+    </div>
+    <div class="account_section">
+      <p>Account</p>
+    </div>
+  </div>
+</nav>

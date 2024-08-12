@@ -1,0 +1,26 @@
+<div class="category_section">
+  <h2 class="category_title">Products</h2>
+  <div>
+    <input
+      type="radio"
+      id="all"
+      class="input_radio"
+      name="category"
+      value=""
+      (change)="onCategoryChange('')"
+      [checked]="selectedCategory === ''"
+    />
+    <label for="all">All</label>
+  </div>
+  <div *ngFor="let category of categories">
+    <input
+      class="input_radio"
+      type="radio"
+      id="{{ category.name }}"
+      name="category"
+      [value]="category.name"
+      (change)="onCategoryChange(category.name)"
+    />
+    <label for="{{ category.name }}">{{ category.name }}</label>
+  </div>
+</div>
