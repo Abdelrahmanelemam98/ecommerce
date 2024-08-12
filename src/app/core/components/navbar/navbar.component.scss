@@ -1,12 +1,15 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  align-content: center;
-  padding: 10px 50px;
-  background-color: #ffff;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #ffffff;
   border-bottom: 1px solid #424242;
+  flex-wrap: nowrap;
+
   .navbar_logo {
     display: flex;
+    align-items: center;
     gap: 10px;
     p {
       margin-top: 5px;
@@ -19,36 +22,41 @@
       height: 30px;
       border-radius: 10px;
       background: linear-gradient(45deg, #ffffff, #d0d5dd);
+      position: relative;
       .inner_logo {
         background-color: #41cccc;
         width: 15px;
         height: 15px;
         border-radius: 50%;
         position: absolute;
-        margin: 7px;
+        top: 7px;
+        left: 7px;
       }
     }
   }
+
   .navbar-brand {
     text-align: center;
     display: flex;
     align-items: center;
+
     a {
       text-decoration: none;
       color: #333;
       font-size: 16px;
-      margin-left: 3rem;
       cursor: pointer;
+      margin-top: 6px;
     }
   }
+
   .search_section {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    flex-grow: 1;
-    gap: 30px;
+    gap: 20px;
     input {
-      width: 300px;
+      width: 100%;
+      max-width: 200px;
       padding: 7px;
       border: 0.5px solid #424242;
       border-radius: 8px;
@@ -88,7 +96,70 @@
       }
     }
   }
-}
-.container {
-  width: 100%;
+
+  @media (max-width: 768px) {
+    padding: 10px 10px;
+
+    .navbar_logo {
+      p {
+        font-size: 14px;
+      }
+    }
+
+    .navbar-brand {
+      a {
+        font-size: 14px;
+      }
+    }
+
+    .search_section {
+      gap: 10px;
+      input {
+        max-width: 150px;
+      }
+
+      .cart-icon {
+        font-size: 20px;
+      }
+
+      .account_section {
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px 5px;
+    .navbar_logo {
+      p {
+        font-size: 12px;
+        margin-top: 5px;
+      }
+    }
+
+    .navbar-brand {
+      a {
+        font-size: 12px;
+      }
+    }
+
+    .search_section {
+      gap: 5px;
+      input {
+        max-width: 100px;
+      }
+
+      .cart-icon {
+        font-size: 18px;
+      }
+
+      .account_section {
+        p {
+          font-size: 12px;
+        }
+      }
+    }
+  }
 }

@@ -6,12 +6,14 @@
   margin: 0 auto;
   padding: 0 15px;
 }
+
 .inner_content {
   margin-block: 4rem;
   h2 {
     margin-block: 1rem;
   }
 }
+
 .grid {
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -41,6 +43,7 @@
           flex-grow: 1;
           padding: 15px;
           position: relative;
+
           .card_body_img {
             img {
               max-width: 100%;
@@ -113,6 +116,7 @@
               display: flex;
               align-items: center;
               justify-content: flex-end;
+
               i {
                 color: $review-bg;
                 margin-right: 5px;
@@ -133,6 +137,7 @@
     }
   }
 }
+
 .header_section {
   display: flex;
   justify-content: space-between;
@@ -150,6 +155,7 @@
     span {
       margin-right: 10px;
       font-weight: bold;
+      width: 100%;
     }
 
     select {
@@ -164,4 +170,97 @@
   display: flex;
   justify-content: center;
   margin-block: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .inner_content {
+    margin-block: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header_section {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .sorting_section {
+      margin-top: 10px;
+    }
+  }
+
+  .pagination_section {
+    margin-block: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  .header_section {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .results_count {
+      font-size: 14px;
+    }
+
+    .sorting_section {
+      margin-top: 10px;
+      select {
+        width: 100%;
+      }
+    }
+  }
+
+  .product_card {
+    .card_title {
+      h6 {
+        font-size: 1rem;
+      }
+
+      .card_desc {
+        font-size: 12px;
+      }
+    }
+
+    .card_price {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .card_price_before,
+      .card_price_after {
+        font-size: 1rem;
+      }
+    }
+
+    .card_details {
+      font-size: 0.75rem;
+
+      p {
+        margin: 3px 0;
+      }
+    }
+
+    .card_review {
+      justify-content: flex-start;
+
+      i {
+        font-size: 0.875rem;
+      }
+
+      span {
+        font-size: 0.875rem;
+      }
+    }
+  }
 }
