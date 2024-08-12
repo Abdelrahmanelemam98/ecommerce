@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from 'src/assets/shared/services/cart.service';
 import { LoginService } from 'src/assets/shared/services/login.service';
 
@@ -11,14 +12,20 @@ export class NavbarComponent implements OnInit {
   @Output() searchEvent = new EventEmitter<string>();
   countProduct!: number;
   isLoggedIn: boolean = false;
+  isLoginRoute: boolean = false;
   constructor(
     private cartService: CartService,
-    private authServices: LoginService
+    private authServices: LoginService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.getCountItem();
     this.isLoggedIn = this.authServices.isLoggedIn();
+
+    this.router.events.subscribe(() => {
+      this.isLoginRoute = this.router.url.includes('/login');
+    });
   }
   onInput(event: Event) {
     const inputElement = event.target as HTMLInputElement;

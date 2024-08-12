@@ -19,10 +19,16 @@
           loginForm.get('email')?.invalid && loginForm.get('email')?.touched
         "
       >
-        <small *ngIf="loginForm.get('email')?.errors?.['required']">
+        <small
+          class="require"
+          *ngIf="loginForm.get('email')?.errors?.['required']"
+        >
           Email is required.
         </small>
-        <small *ngIf="loginForm.get('email')?.errors?.['pattern']">
+        <small
+          class="require"
+          *ngIf="loginForm.get('email')?.errors?.['pattern']"
+        >
           Invalid email format.
         </small>
       </div>
@@ -41,10 +47,16 @@
           loginForm.get('password')?.touched
         "
       >
-        <small *ngIf="loginForm.get('password')?.errors?.['required']">
+        <small
+          class="require"
+          *ngIf="loginForm.get('password')?.errors?.['required']"
+        >
           Password is required.
         </small>
-        <small *ngIf="loginForm.get('password')?.errors?.['pattern']">
+        <small
+          class="require"
+          *ngIf="loginForm.get('password')?.errors?.['pattern']"
+        >
           Password must be at least 8 characters long and contain uppercase,
           lowercase, number, and special character.
         </small>
