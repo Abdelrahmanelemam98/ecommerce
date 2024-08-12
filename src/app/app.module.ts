@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from 'src/assets/shared/shared.module';
 import { ProductListComponent } from './home/components/product-list/product-list.component';
-import { CategoryComponent } from './home/category/category.component';
+import { CategoryComponent } from './home/components/category/category.component';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';

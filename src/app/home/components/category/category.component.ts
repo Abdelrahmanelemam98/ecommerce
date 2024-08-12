@@ -1,7 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ICategory } from 'src/assets/model/icategory';
 import { CategoryService } from 'src/assets/shared/services/category.service';
-
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
