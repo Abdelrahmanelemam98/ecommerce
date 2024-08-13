@@ -22,10 +22,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.getCountItem();
     this.isLoggedIn = this.authServices.isLoggedIn();
-
-    this.router.events.subscribe(() => {
-      this.isLoginRoute = this.router.url.includes('/login');
-    });
+    this.removeToken();
   }
   onInput(event: Event) {
     const inputElement = event.target as HTMLInputElement;
@@ -35,7 +32,14 @@ export class NavbarComponent implements OnInit {
   onSearch(query: string) {
     this.searchEvent.emit(query.trim());
   }
+  // Remove Token
 
+  removeToken() {
+    this.router.events.subscribe(() => {
+      this.isLoginRoute = this.router.url.includes('/login');
+      localStorage.removeItem('currentUser');
+    });
+  }
   // Get Count Proudcut In Cart
   getCountItem() {
     this.cartService.getCartItems().subscribe((items) => {
