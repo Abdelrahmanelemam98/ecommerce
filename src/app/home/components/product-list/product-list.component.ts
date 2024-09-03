@@ -106,9 +106,13 @@ export class ProductListComponent implements OnInit {
   }
 
   // Handle Category Change
-  onCategoryChange(category: string) {
+  onCategoryChange(category: string): void {
     console.log(`Category changed to: ${category}`);
-    this.categoryProduct(category);
+    if (category === '') {
+      this.getProduct();
+    } else {
+      this.categoryProduct(category);
+    }
   }
 
   // Handle Search By Category
